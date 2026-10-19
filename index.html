@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>S.O.S. — Perdidas en la altura</title>
+<meta name="description" content="Una aventura interactiva de supervivencia y misterio. Cinco chicas, una tormenta y una montaña imposible."/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"/>
+<link rel="stylesheet" href="https://db.onlinewebfonts.com/c/314d20cfeafe99e7a9d9bae30453852a?family=Thunder+SemBd" media="print" onload="this.media='all'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&display=swap"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&display=swap"/><link rel="stylesheet" href="https://db.onlinewebfonts.com/c/314d20cfeafe99e7a9d9bae30453852a?family=Thunder+SemBd"/></noscript>
+<style>
+
+
+
+:root{color-scheme:dark;--primary:#a9d1dd;--primary-dark:#649aac;--light:#ecf4f6;--muted:#93acb9;--panel:#182834;--bg:#0b141c;--bg2:#111f29;--border:rgba(164,216,229,.2)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;position:relative;min-height:100%;font:400 15px/1.75 'Segoe UI',Arial,sans-serif;color:var(--light);background:var(--bg)}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:2px solid #c8ebf1;outline-offset:4px}img{display:block;max-width:100%}h1,h2,h3,h4,p{margin:0}section{scroll-margin-top:70px}.container{width:min(100% - 48px,1100px);margin:auto}.narrow{width:min(100% - 48px,760px)}
+nav.navbar{height:70px;position:fixed;inset:0 0 auto;z-index:30;background:rgba(7,17,25,.35);backdrop-filter:blur(14px);border-bottom:1px solid rgba(190,230,239,.13);transition:.25s}nav.navbar.show-color{background:rgba(8,19,29,.97);box-shadow:0 10px 28px #0006}nav .container-fluid{height:100%;position:relative;padding:0 4%;display:flex;align-items:center;justify-content:center}.navbar-home{position:absolute;left:5%;height:70px;display:flex;align-items:center;gap:11px;color:var(--primary);font-size:19px;font-weight:800;letter-spacing:2px}.navbar-home svg{width:26px;height:26px}.navbar-toggle{display:none;background:transparent;border:0;padding:10px}.navbar-toggle span{display:block;width:25px;height:1px;margin:6px;background:#d0e8ee}.navbar-collapse{height:100%;display:flex;justify-content:center;align-items:center}.navbar-nav{height:100%;list-style:none;padding:0;margin:0;display:flex}.navbar-nav li{height:100%}.navbar-nav a{height:100%;display:flex;align-items:center;padding:0 23px;font-size:11px;font-weight:700;letter-spacing:1.3px;color:#bbccd3;transition:.25s}.navbar-nav a:hover{background:#9dcddd12;color:white}.navbar-nav li.active a{color:var(--primary);box-shadow:inset 0 -2px 0 var(--primary)}
+section{position:relative;padding:72px 0 86px}.section-header{font-size:33px;line-height:1.3;font-weight:350;text-align:center;letter-spacing:1.3px;margin-bottom:45px;position:relative}.section-header:after{content:'';display:block;width:64px;height:2px;background:var(--primary);margin:19px auto 0}.section-sub-header{text-align:center;font-size:25px;line-height:1.5;font-weight:300;letter-spacing:.3px}p{margin-bottom:20px;color:#b4c4cb}p:last-child{margin-bottom:0}highlight{color:var(--primary);font-weight:700}
+#home{min-height:690px;height:95vh;max-height:890px;display:flex;align-items:center;justify-content:center;padding:100px 20px 88px;text-align:center;background:#152633;isolation:isolate;overflow:hidden}#home:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,20,32,.45),rgba(6,17,26,.62)),linear-gradient(90deg,rgba(5,15,22,.32),transparent 50%,rgba(5,15,22,.35)),url('https://images.unsplash.com/photo-1454496522488-7a8e488e8602?auto=format&fit=crop&w=2100&q=85') center/cover;z-index:-3}#home:after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse,transparent 0%,rgba(3,10,17,.45) 80%),linear-gradient(0deg,#0b141c,transparent 27%);z-index:-1;pointer-events:none}.hero-mountain{position:absolute;inset:0;z-index:-2;width:100%;height:100%;opacity:.3;pointer-events:none}.hero-content{z-index:1;width:min(100%,730px);display:flex;flex-direction:column;align-items:center}.hero-eyebrow{font-size:10px;letter-spacing:2.8px;color:#b4d7df;margin-bottom:25px;font-weight:700}.mouse{border:2px solid #dbeff4;border-radius:55px;width:73px;height:111px;position:relative;margin:0 auto 27px}.mouse:after{content:'';position:absolute;top:20px;left:calc(50% - 4px);width:8px;height:15px;border:2px solid white;border-radius:8px;animation:wheel 1.5s infinite}@keyframes wheel{to{transform:translateY(37px);opacity:0}}#home h1{font-size:clamp(67px,10vw,125px);font-weight:400;line-height:1;letter-spacing:11px;color:#f5fcff;text-shadow:0 8px 36px #000b}#home h4{font-size:14px;letter-spacing:4px;color:var(--primary);text-transform:uppercase;margin-top:9px;margin-bottom:22px}#home p{color:#e7f1f6;line-height:2;max-width:665px;font-size:14px;text-shadow:0 3px 9px #0009;margin-bottom:28px}.tutorials-link{display:inline-flex;align-items:center;justify-content:center;gap:15px;min-width:175px;padding:12px 21px;color:var(--primary);border:2px solid var(--primary);font-size:11px;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;transition:.25s}.tutorials-link:hover{background:var(--primary);color:#0a1921;box-shadow:0 8px 25px #0006;transform:translateY(-3px)}.scroll-hint{position:absolute;bottom:25px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:2px;color:#b5cdd4;white-space:nowrap}.scroll-hint span{margin-right:9px;animation:wheel 1.5s infinite;display:inline-block}
+#about{text-align:center;background:linear-gradient(#0c151e,#111f29)}#about p{max-width:660px;margin:0 auto 22px;line-height:2}#about p:last-child{color:#edf5f7;font-weight:600;margin-top:26px}
+#demo{background:#142531}#demo .section-header{margin-bottom:16px}.mechanics-subtitle{text-align:center;font-size:10px;letter-spacing:2px;color:#94b4c0;margin-bottom:46px}.video-roll{list-style:none;padding:0;display:flex;align-items:center;justify-content:center;margin:0 auto 60px;max-width:1050px;gap:10px;position:relative}.video-roll li{flex:0 1 30%;min-width:0;position:relative;transition:transform .35s,z-index .35s}.video-roll li:nth-child(2){flex-basis:34%;z-index:3;transform:scale(1.07);box-shadow:0 24px 42px #0006}.video-roll li:first-child{transform:perspective(1000px) rotateY(6deg) translateX(8px)}.video-roll li:last-child{transform:perspective(1000px) rotateY(-6deg) translateX(-8px)}.video-roll li:hover,.video-roll li:first-child:hover,.video-roll li:last-child:hover,.video-roll li:nth-child(2):hover{z-index:6;transform:translateY(-10px) scale(1.04)}.video-roll li a{position:relative;display:block;overflow:hidden;border:1px solid rgba(168,215,228,.6);background:#10212c;aspect-ratio:1122/1402;box-shadow:0 15px 34px #0006;cursor:zoom-in}.video-roll li a img{width:100%;height:100%;object-fit:contain;transition:filter .3s,transform .5s}.video-roll li a:hover img{transform:scale(1.035);filter:brightness(1.08)}.video-roll li a:after{content:'';position:absolute;inset:0;pointer-events:none;border:5px solid rgba(171,222,234,.035)}.mechanics-footer{font-size:10px;letter-spacing:1.6px;color:#93b7c1;text-align:center;margin-top:5px}.mechanics-footer span{color:#d3eef2}.mechanics-note{display:block;font-size:11px;color:#86aab8;text-align:center;margin-top:10px}.mech-label{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#c0e0e8;letter-spacing:1px;font-weight:700;margin-top:13px}.mech-label b{font-weight:400;color:#95b3bd}
+#features{background:#0d1821;padding-bottom:0}.feature-container{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:38px;margin:55px auto 85px}.feature{text-align:center;padding:20px 4px}.feature svg{width:65px;height:65px;margin-bottom:20px;stroke:var(--primary)}.feature h4{font-size:14px;color:var(--primary);text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:12px}.feature p{font-size:13px;color:#99afbb;line-height:1.9}.banner{display:grid;grid-template-columns:1fr 1fr;min-height:495px}.banner-child{min-width:0;padding:32px 28px 0;display:flex;align-items:center;flex-direction:column;overflow:hidden}.bc-left{background:#274556}.bc-right{background:#152833}.banner-child .section-sub-header{font-size:25px;color:#e8f6f9;margin:10px 0 29px;min-height:74px;max-width:400px}.banner-child .section-sub-header em{font-style:normal;color:#b3ddec}.animated-scroll,.focus-events{height:355px;max-width:430px;width:90%;border:3px solid #4b7182;border-bottom:0;border-radius:8px 8px 0 0;overflow:hidden;background:#112431}.focus-events{border-color:#335364}.scroll-header{height:52px;display:flex;align-items:center;justify-content:center;gap:19px;background:#132e3d}.bc-right .scroll-header{background:#11212b}.scroll-nav{width:16%;height:7px;border-radius:5px;background:#658da1;animation:pulsebar 5s infinite}.scroll-nav.sn-2{animation-delay:1.5s}.scroll-nav.sn-3{animation-delay:3s}@keyframes pulsebar{0%,30%,100%{background:#3f6678}45%,65%{background:#b3e6ed}}.scroll-body{height:310px;overflow:hidden;padding:20px}.animated-scroll .scroll-content{animation:move-content 6s infinite}.animated-scroll .scroll-child{height:140px;margin-bottom:19px;border:1px solid #426474;border-radius:4px;padding:21px 19px;background:#193746}.scroll-child-title{font-size:10px;letter-spacing:1.4px;color:#b8dbe2;margin-bottom:14px}.fake-meter{height:8px;border-radius:10px;background:#3e5e70;overflow:hidden;margin:15px 0}.fake-meter i{height:100%;display:block;background:#a2d2df}.fake-line{height:6px;background:#467188;opacity:.65;border-radius:10px;width:65%;margin-top:13px}.fake-line.small{width:41%}@keyframes move-content{0%,25%{transform:translateY(0)}42%,65%{transform:translateY(-158px)}82%,100%{transform:translateY(-316px)}}.focus-body{padding:30px 18px;position:relative;text-align:center}.focus-title{font-size:19px;font-weight:600;letter-spacing:.8px;color:#d8ecf0;margin:5px 0 20px}.focus-question{font-size:12px;color:#8caebb;margin-bottom:18px}.focus-choice{padding:13px;text-align:left;border:1px solid #3b6273;background:#193644;margin:12px auto;font-size:11px;max-width:330px;color:#c8e0e8}.focus-choice span{color:#93c8d9;margin-right:13px;font-weight:700}.focus-choice.chosen{animation:choice-highlight 4.2s infinite}.focus-choice b{float:right;font-weight:400}@keyframes choice-highlight{0%,40%,100%{background:#193644;border-color:#3b6273}50%,70%{background:#376176;border-color:#a7d9e4}}.focus-cursor{position:absolute;right:18%;bottom:38px;font-size:19px;color:#d6f0f7;animation:cursorDemo 4.2s infinite}@keyframes cursorDemo{0%,15%{opacity:0;transform:translate(-40px,-60px)}35%,55%{opacity:1;transform:translate(-40px,-60px)}75%{opacity:1;transform:translate(0,0)}90%,100%{opacity:0;transform:translate(0,0)}}
+#howto{background:linear-gradient(#0c1922,#0a141c);text-align:center}#howto .section-sub-header{max-width:740px;margin:0 auto 33px;color:#bacbd2;font-size:20px}#howto .tutorials-link{margin:0 auto 19px}#howto h4{font-size:13px;font-weight:400;color:#8ea9b6;margin-bottom:60px}.gallery-heading{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:1.5px;color:#b5cbd3;font-weight:700;text-align:left;border-top:1px solid #38515d;padding-top:18px;margin-bottom:17px}.gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.gallery button{border:1px solid #446272;background:#213544;position:relative;padding:0;aspect-ratio:3/4.3;overflow:hidden;color:white;transition:.25s}.gallery button:hover{transform:translateY(-8px);border-color:#b1d9e5}.gallery img{width:100%;height:100%;object-fit:cover;position:relative;z-index:0}.gallery .gallery-shade{position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,13,20,.93),transparent 65%);pointer-events:none}.gallery-num{position:absolute;top:11px;left:11px;font-size:10px;font-weight:700;color:#d6eef4}.gallery-info{position:absolute;bottom:13px;left:11px;right:11px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:1px;color:#d6eff5}.gallery-fallback{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;justify-content:center;align-items:center;text-align:center;background:linear-gradient(130deg,#264250,#13232e);font-size:10px;letter-spacing:1px;color:#99bbc6;z-index:-1}.gallery-fallback span{font-size:32px}.gallery button.no-image img{display:none}.gallery button.no-image .gallery-fallback{z-index:0}.gallery button.no-image .gallery-num,.gallery button.no-image .gallery-info{z-index:2}.gallery-instruction{font-size:10px;color:#7fa0ae;letter-spacing:1.3px;text-align:left;margin-top:22px}
+footer{background:#070f15;text-align:center;padding:70px 20px 80px;color:#a8bcc4;letter-spacing:1px}footer h4{font-size:17px;font-weight:400}footer .foot-mark{font-size:48px;color:#b8dbe5;font-weight:250;letter-spacing:6px;line-height:1.4}footer .foot-line{width:48px;height:1px;background:#729dac;margin:12px auto}.scrollTop{width:45px;height:45px;border:1px solid #8fc9d6;position:fixed;right:20px;bottom:20px;display:grid;place-items:center;background:#1e3b4a;color:#d8f4fa;font-size:23px;transform:translateY(70px);transition:.25s;z-index:35;opacity:0}.scrollTop.show-button{opacity:1;transform:translateY(0)}.scrollTop:hover{background:#b8e1e8;color:#12232e}
+.lightbox{position:fixed;inset:0;background:rgba(4,12,19,.97);backdrop-filter:blur(14px);z-index:99;display:flex;flex-direction:column;padding:27px 4%;color:#cfe8ed}.lightbox[hidden]{display:none}.lightbox-head,.lightbox-foot{display:flex;justify-content:space-between;gap:15px;font-size:10px;letter-spacing:1.4px;color:#89b8c6;padding-right:55px}.lightbox-close{position:absolute;right:28px;top:19px;border:1px solid #648997;background:#1b3645;color:white;width:40px;height:40px}.lightbox-content{display:flex;justify-content:center;align-items:center;flex:1;min-height:0;gap:15px}.lightbox-content>img{height:100%;min-height:0;width:auto;max-width:calc(100% - 110px);object-fit:contain;border:1px solid #3d6070;box-shadow:0 20px 70px #0009}.lightbox-nav{width:43px;height:43px;border:1px solid #527886;background:#183544;color:white;font-size:20px;flex-shrink:0}.lightbox-nav:hover,.lightbox-close:hover{background:#b6dce6;color:#0b1c25}.gallery-lightbox-missing{padding:45px 25px;text-align:center;color:#bbd6df;border:1px solid #446171;background:#1b3644}
+@media(max-width:850px){.navbar-home{left:2%}.navbar-nav a{padding:0 11px;font-size:10px}.feature-container{gap:15px}.gallery{gap:6px}}
+@media(max-width:660px){nav.navbar{height:62px}nav .container-fluid{justify-content:space-between}.navbar-home{position:static;height:62px}.navbar-toggle{display:block}.navbar-collapse{display:none;position:absolute;left:0;right:0;top:62px;height:auto;background:rgba(7,18,26,.98);border-bottom:1px solid #3e6575}.navbar-collapse.open{display:block}.navbar-nav{display:block}.navbar-nav li{height:48px}.navbar-nav a{padding:0 24px}#home{height:760px;min-height:690px}.mouse{width:60px;height:88px}#home h1{font-size:81px}#home h4{font-size:12px;letter-spacing:3px}#home p{font-size:12px}.hero-eyebrow{font-size:9px;letter-spacing:1.4px}.section-header{font-size:29px}#about p{font-size:13px}.video-roll{flex-direction:column;gap:31px}.video-roll li,.video-roll li:nth-child(2),.video-roll li:first-child,.video-roll li:last-child{flex:auto;width:min(100%,380px);transform:none;box-shadow:none}.video-roll li:hover,.video-roll li:nth-child(2):hover{transform:translateY(-6px)}.video-roll li:nth-child(2){order:-1}.video-roll li a{max-height:530px}.feature-container{grid-template-columns:1fr;gap:5px;margin-bottom:54px}.feature{padding:18px 4px}.feature svg{height:53px;width:53px;margin-bottom:7px}.feature p{max-width:310px;margin:auto}.banner{grid-template-columns:1fr}.banner-child{height:495px}.gallery{display:flex;overflow:auto;scroll-snap-type:x mandatory;padding-bottom:13px}.gallery button{flex:0 0 175px;scroll-snap-align:center}#howto .section-sub-header{font-size:17px}.lightbox-content{gap:5px}.lightbox-content>img{max-width:calc(100% - 72px)}.lightbox-nav{width:32px;height:38px}.lightbox-foot span:last-child{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+
+/* Adaptación mínima de cabecera: video vertical y nieve al fondo. El resto de la landing permanece intacto. */
+#home.sos-video-home{
+  position:relative;isolation:isolate;display:flex;justify-content:center;align-items:flex-start;
+  height:auto;min-height:0;max-height:none;padding:93px 20px 102px;
+  background:radial-gradient(ellipse at 14% 36%,#182f44 0%,transparent 38%),
+             radial-gradient(ellipse at 90% 74%,#1a3043 0%,transparent 40%),
+             linear-gradient(180deg,#0b1724 0%,#0a1421 57%,#0b141c 100%) !important;
+  overflow:hidden;
+}
+#home.sos-video-home:before,#home.sos-video-home:after{content:none!important;display:none!important}
+#home.sos-video-home .hero-mountain,#home.sos-video-home .mouse,#home.sos-video-home .hero-eyebrow{display:none!important}
+#home .sos-video-snow{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+#home .sos-video-snowflake{position:absolute;left:var(--x);top:-15px;width:var(--sz);height:var(--sz);background:#d7eef5;border-radius:50%;opacity:0;filter:blur(.2px);animation:sos-video-flakes var(--time) linear var(--delay) infinite;will-change:transform,opacity}
+@keyframes sos-video-flakes{0%{transform:translate3d(0,-5px,0);opacity:0}12%{opacity:var(--alpha)}86%{opacity:var(--alpha)}100%{transform:translate3d(var(--dx),1150px,0);opacity:0}}
+#home .sos-video-content{position:relative;z-index:2;width:min(100%,750px);max-width:750px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+#home.sos-video-home h1{font-size:clamp(70px,9vw,112px);font-weight:400;letter-spacing:12px;line-height:1;margin:0 0 25px;color:#f3fcff;text-shadow:0 5px 24px rgba(0,0,0,.35);position:relative;z-index:2}
+#home .sos-video-frame{position:relative;z-index:2;display:block;width:min(100%,338px);aspect-ratio:9/16;margin:0 auto 28px;padding:5px;overflow:hidden;background:#020609;border:1px solid rgba(174,217,231,.38);border-radius:8px;box-shadow:0 0 0 1px rgba(145,194,211,.06),0 21px 65px rgba(0,0,0,.58),0 0 100px rgba(109,171,203,.075)}
+#home .sos-video-frame:before{content:none!important;display:none!important}
+#home .sos-video-frame video{display:block;width:100%;height:100%;object-fit:contain;border:0;border-radius:4px;background:#000;position:relative;z-index:2}
+#home.sos-video-home h4{font-size:15px;font-weight:700;letter-spacing:4px;margin:0 0 18px;text-transform:uppercase;color:#a8d6e3;text-shadow:none}
+#home.sos-video-home p{color:#c6d9e2;line-height:1.85;max-width:655px;font-size:13px;text-shadow:none;margin:0 auto 26px;padding:0 10px}
+#home.sos-video-home .tutorials-link{position:relative;z-index:2}
+#home .sos-video-toggle{appearance:none;border:0;background:transparent;font-size:9px;letter-spacing:1.4px;font-weight:600;color:#8da9b7;margin:13px auto 0;padding:9px 16px;transition:color .2s}
+#home .sos-video-toggle:hover{color:#e8f8fd}
+#home.sos-video-home .scroll-hint{position:absolute;left:50%;bottom:20px;z-index:3;transform:translateX(-50%);white-space:nowrap;color:#8da8b5}
+@media(max-width:600px){
+ #home.sos-video-home{padding:78px 18px 97px}
+ #home.sos-video-home h1{font-size:clamp(62px,15vw,94px);letter-spacing:8px;margin-bottom:22px}
+ #home .sos-video-frame{width:min(100%,300px);padding:4px;margin-bottom:25px}
+ #home.sos-video-home h4{font-size:13px;letter-spacing:3px;margin-bottom:14px}
+ #home.sos-video-home p{font-size:12px;line-height:1.85;margin-bottom:23px;max-width:540px;padding:0 2px}
+ #home.sos-video-home .scroll-hint{font-size:9px;bottom:18px}
+}
+@media(max-width:360px){#home .sos-video-frame{width:min(100%,270px)}#home.sos-video-home h1{font-size:63px}}
+@media(prefers-reduced-motion:reduce){#home .sos-video-snowflake{animation:none!important}}
+
+/* 17 OCT — Ajustes solicitados, sin alterar el resto de la landing */
+:root{--font-body:'Syne','Segoe UI',Arial,sans-serif;--font-heading:'Thunder SemBd','Thunder',Impact,'Arial Narrow',sans-serif}
+body,button,input,a,p,small,span,li{font-family:var(--font-body)}
+.section-header,.section-sub-header,#home h1,#home h4,.feature h4,
+.banner .section-sub-header,footer h4,footer .foot-mark,
+.focus-title,.scroll-child-title{font-family:var(--font-heading);font-stretch:condensed}
+.section-header{font-size:clamp(46px,5vw,67px);font-weight:600;line-height:.95;letter-spacing:.4px}
+.section-header:after{margin-top:23px}
+.section-sub-header{font-size:clamp(31px,3vw,42px);line-height:1.1;letter-spacing:.35px}
+.feature h4{font-size:27px;line-height:1.05;font-weight:600;letter-spacing:.8px}
+.banner .section-sub-header{font-size:clamp(32px,3.2vw,48px);line-height:1.04}
+footer h4{font-size:28px;line-height:1.1}
+footer .foot-mark{font-size:62px;letter-spacing:1.5px}
+#home.sos-video-home h1{font-family:var(--font-heading);font-size:clamp(103px,10vw,144px);font-weight:700;letter-spacing:3px;line-height:.88}
+#home.sos-video-home h4{font-family:var(--font-heading);font-size:clamp(26px,2.6vw,37px);font-weight:600;line-height:1.08;letter-spacing:1.25px;margin-top:3px;margin-bottom:19px}
+#home .sos-video-frame{isolation:isolate}
+#home .sos-video-toggle{
+  position:absolute;right:13px;bottom:13px;z-index:6;
+  display:flex;align-items:center;justify-content:center;
+  width:35px;height:35px;margin:0;padding:0;
+  background:rgba(4,14,22,.65);border:1px solid rgba(213,242,249,.42);
+  border-radius:50%;backdrop-filter:blur(5px);color:#f3fcff;
+  transition:background .2s,border-color .2s,transform .2s;
+}
+#home .sos-video-toggle:hover{background:rgba(14,36,49,.94);border-color:#f1fcff;transform:scale(1.07)}
+#home .sos-video-toggle svg{display:block;width:17px;height:17px}
+#home .sos-video-toggle .control-play{display:none}
+#home .sos-video-toggle.is-paused .control-play{display:block}
+#home .sos-video-toggle.is-paused .control-pause{display:none}
+#home.sos-video-home .scroll-hint{height:26px;width:32px;display:grid;place-items:center}
+#home.sos-video-home .scroll-hint span{font:400 24px/1 var(--font-body)}
+#howto .gallery{margin:0 auto 49px}
+#howto .section-sub-header{font-family:var(--font-body);font-size:17px;line-height:1.75;font-weight:500;letter-spacing:0;max-width:730px;margin:0 auto 25px}
+#howto .tutorials-link{margin:0 auto 17px}
+#howto h4{font-family:var(--font-body);font-size:12px;font-weight:500;margin-bottom:0}
+.navbar-nav a{font-family:var(--font-body);font-size:11px;letter-spacing:.15px;padding-left:17px;padding-right:17px}
+@media(max-width:700px){
+  .navbar-nav a{padding:0 16px}
+  #home.sos-video-home h1{font-size:clamp(93px,16vw,122px);letter-spacing:2px;line-height:.94}
+  #home.sos-video-home h4{font-size:31px;letter-spacing:1px}
+  .section-header{font-size:clamp(45px,11vw,61px)}
+  #howto .gallery{margin-bottom:36px}
+  #howto .section-sub-header{font-size:14px;line-height:1.75}
+  #home .sos-video-toggle{right:12px;bottom:12px;width:34px;height:34px}
+}
+@media(max-width:360px){#home.sos-video-home h1{font-size:90px}}
+
+
+/* 17 OCT — Corrección de tipografías y fondos de secciones */
+:root{
+  --font-body:'Syne','Segoe UI',Arial,sans-serif;
+  --font-sos:'Thunder SemBd','Thunder',Impact,'Arial Narrow',sans-serif;
+  --font-section:'Bricolage Grotesque','Syne','Segoe UI',Arial,sans-serif;
+}
+body,button,input,textarea,select,a,p,small,span,li{font-family:var(--font-body)!important}
+#home.sos-video-home h1,
+.navbar-home span,
+footer .foot-mark{font-family:var(--font-sos)!important;letter-spacing:inherit}
+
+.section-header,
+.section-sub-header,
+.feature h4,
+.banner .section-sub-header,
+footer h4,
+.gallery-heading,
+.focus-title,
+.scroll-child-title{
+  font-family:var(--font-section)!important;
+  font-stretch:normal!important;
+  font-style:normal!important;
+}
+.section-header{font-size:33px!important;line-height:1.22!important;font-weight:700!important;letter-spacing:.55px!important;margin-bottom:45px!important}
+.section-header:after{margin-top:19px!important}
+.section-sub-header{font-size:25px!important;line-height:1.45!important;font-weight:600!important;letter-spacing:.25px!important}
+.feature h4{font-size:17px!important;line-height:1.2!important;font-weight:700!important;letter-spacing:1.1px!important}
+.banner .section-sub-header{font-size:25px!important;line-height:1.2!important;font-weight:700!important;max-width:400px!important}
+footer h4{font-size:18px!important;line-height:1.2!important;font-weight:700!important}
+#home.sos-video-home h4{font-family:var(--font-body)!important;font-size:14px!important;letter-spacing:4px!important;font-weight:800!important;line-height:1.35!important;text-transform:uppercase}
+
+#about,#demo,#features{background-position:center center;background-size:cover;background-repeat:no-repeat;isolation:isolate;overflow:hidden}
+#about::before,#demo::before,#features::before{content:'';position:absolute;inset:0;background:transparent;z-index:0;pointer-events:none}
+#about > .container,
+#demo > .container,
+#features > .container,
+#features > .container-fluid{position:relative;z-index:1}
+
+#about{background-image:linear-gradient(rgba(8,16,24,.74),rgba(10,20,29,.82)),url('media/about.webp')!important}
+#demo{background-image:linear-gradient(rgba(8,17,26,.74),rgba(11,24,35,.84)),url('media/mecanicas-fondo.webp')!important}
+#features{background-image:linear-gradient(rgba(7,15,23,.73),rgba(9,18,28,.84)),url('media/montana-fondo.webp')!important;background-color:#0d1821!important}
+#about p{color:#d7e4e9!important;text-shadow:0 2px 10px rgba(0,0,0,.32)}
+#about p:last-child{color:#ffffff!important}
+#demo .mechanics-subtitle,#demo .mechanics-note{color:#d2e2e8!important;text-shadow:0 2px 8px rgba(0,0,0,.28)}
+#features .feature p{color:#d7e5eb!important;text-shadow:0 2px 8px rgba(0,0,0,.32)}
+#features .feature h4{color:#ecf7fa!important;text-shadow:0 2px 10px rgba(0,0,0,.34)}
+#features .feature svg{filter:drop-shadow(0 2px 10px rgba(0,0,0,.35))}
+#features .bc-left{background:rgba(25,45,57,.82)!important}
+#features .bc-right{background:rgba(17,33,44,.84)!important}
+#features .scroll-header{background:rgba(19,46,61,.92)!important}
+#features .animated-scroll,#features .focus-events{background:rgba(17,36,49,.88)!important;box-shadow:0 14px 30px rgba(0,0,0,.32)}
+
+@media(max-width:700px){
+  .section-header{font-size:30px!important;line-height:1.24!important}
+  .section-sub-header{font-size:23px!important;line-height:1.4!important}
+  .banner .section-sub-header{font-size:24px!important}
+  #home.sos-video-home h4{font-size:13px!important;letter-spacing:3px!important}
+}
+
+</style>
+</head>
+<body data-spy="scroll" data-target="#scroll-spy">
+<nav class="navbar navbar-fixed-top"><div class="container-fluid"><a class="navbar-home" href="#home" role="button"><svg viewBox="0 0 36 36" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M2 29 14 7l9 16 4-7 7 13H2Z"/></svg><span>S.O.S.</span></a><button type="button" class="navbar-toggle collapsed" id="nav-toggle" aria-expanded="false" aria-label="Menú"><span></span><span></span><span></span></button><div class="navbar-collapse" id="scroll-spy"><ul class="nav navbar-nav"><li><a href="#about">¿De qué trata?</a></li><li><a href="#demo">Mecánicas</a></li><li><a href="#features">La montaña</a></li><li><a href="#howto">Personajes principales</a></li></ul></div></div></nav>
+<section id="home" class="sos-video-home">
+  <div class="sos-video-snow" aria-hidden="true"><i class="sos-video-snowflake" style="--x:13%;--dx:-35px;--time:9s;--delay:-0s;--sz:1px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:84%;--dx:-24px;--time:16s;--delay:-13s;--sz:2px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:57%;--dx:-13px;--time:23s;--delay:-4s;--sz:3px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:30%;--dx:-2px;--time:12s;--delay:-17s;--sz:1px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:3%;--dx:9px;--time:19s;--delay:-8s;--sz:2px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:74%;--dx:20px;--time:26s;--delay:-21s;--sz:3px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:47%;--dx:31px;--time:15s;--delay:-12s;--sz:1px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:20%;--dx:-29px;--time:22s;--delay:-3s;--sz:2px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:91%;--dx:-18px;--time:11s;--delay:-16s;--sz:3px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:64%;--dx:-7px;--time:18s;--delay:-7s;--sz:1px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:37%;--dx:4px;--time:25s;--delay:-20s;--sz:2px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:10%;--dx:15px;--time:14s;--delay:-11s;--sz:3px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:81%;--dx:26px;--time:21s;--delay:-2s;--sz:1px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:54%;--dx:-34px;--time:10s;--delay:-15s;--sz:2px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:27%;--dx:-23px;--time:17s;--delay:-6s;--sz:3px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:0%;--dx:-12px;--time:24s;--delay:-19s;--sz:1px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:71%;--dx:-1px;--time:13s;--delay:-10s;--sz:2px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:44%;--dx:10px;--time:20s;--delay:-1s;--sz:3px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:17%;--dx:21px;--time:9s;--delay:-14s;--sz:1px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:88%;--dx:32px;--time:16s;--delay:-5s;--sz:2px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:61%;--dx:-28px;--time:23s;--delay:-18s;--sz:3px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:34%;--dx:-17px;--time:12s;--delay:-9s;--sz:1px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:7%;--dx:-6px;--time:19s;--delay:-0s;--sz:2px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:78%;--dx:5px;--time:26s;--delay:-13s;--sz:3px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:51%;--dx:16px;--time:15s;--delay:-4s;--sz:1px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:24%;--dx:27px;--time:22s;--delay:-17s;--sz:2px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:95%;--dx:-33px;--time:11s;--delay:-8s;--sz:3px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:68%;--dx:-22px;--time:18s;--delay:-21s;--sz:1px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:41%;--dx:-11px;--time:25s;--delay:-12s;--sz:2px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:14%;--dx:0px;--time:14s;--delay:-3s;--sz:3px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:85%;--dx:11px;--time:21s;--delay:-16s;--sz:1px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:58%;--dx:22px;--time:10s;--delay:-7s;--sz:2px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:31%;--dx:33px;--time:17s;--delay:-20s;--sz:3px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:4%;--dx:-27px;--time:24s;--delay:-11s;--sz:1px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:75%;--dx:-16px;--time:13s;--delay:-2s;--sz:2px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:48%;--dx:-5px;--time:20s;--delay:-15s;--sz:3px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:21%;--dx:6px;--time:9s;--delay:-6s;--sz:1px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:92%;--dx:17px;--time:16s;--delay:-19s;--sz:2px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:65%;--dx:28px;--time:23s;--delay:-10s;--sz:3px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:38%;--dx:-32px;--time:12s;--delay:-1s;--sz:1px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:11%;--dx:-21px;--time:19s;--delay:-14s;--sz:2px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:82%;--dx:-10px;--time:26s;--delay:-5s;--sz:3px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:55%;--dx:1px;--time:15s;--delay:-18s;--sz:1px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:28%;--dx:12px;--time:22s;--delay:-9s;--sz:2px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:1%;--dx:23px;--time:11s;--delay:-0s;--sz:3px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:72%;--dx:34px;--time:18s;--delay:-13s;--sz:1px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:45%;--dx:-26px;--time:25s;--delay:-4s;--sz:2px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:18%;--dx:-15px;--time:14s;--delay:-17s;--sz:3px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:89%;--dx:-4px;--time:21s;--delay:-8s;--sz:1px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:62%;--dx:7px;--time:10s;--delay:-21s;--sz:2px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:35%;--dx:18px;--time:17s;--delay:-12s;--sz:3px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:8%;--dx:29px;--time:24s;--delay:-3s;--sz:1px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:79%;--dx:-31px;--time:13s;--delay:-16s;--sz:2px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:52%;--dx:-20px;--time:20s;--delay:-7s;--sz:3px;--alpha:0.48"></i><i class="sos-video-snowflake" style="--x:25%;--dx:-9px;--time:9s;--delay:-20s;--sz:1px;--alpha:0.64"></i><i class="sos-video-snowflake" style="--x:96%;--dx:2px;--time:16s;--delay:-11s;--sz:2px;--alpha:0.38"></i><i class="sos-video-snowflake" style="--x:69%;--dx:13px;--time:23s;--delay:-2s;--sz:3px;--alpha:0.28"></i><i class="sos-video-snowflake" style="--x:42%;--dx:24px;--time:12s;--delay:-15s;--sz:1px;--alpha:0.48"></i></div>
+  <div class="hero-content sos-video-content">
+    <h1>S.O.S</h1>
+    <div class="sos-video-frame">
+      <video id="sos-cover-video" autoplay muted playsinline webkit-playsinline loop preload="metadata" poster="media/video-poster.jpg" aria-label="Video de presentación de S.O.S. Perdidas en la altura">
+        <source src="media/portada.webm" type="video/webm">
+        Tu navegador no permite reproducir este video.
+      </video>
+      <button type="button" class="sos-video-toggle" id="sos-video-toggle" aria-label="Pausar video" aria-pressed="false" title="Pausar video">
+        <svg class="control-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6.5" y="5" width="3.8" height="14" rx=".7"/><rect x="13.7" y="5" width="3.8" height="14" rx=".7"/></svg>
+        <svg class="control-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.5 4.8c0-.7.8-1.1 1.4-.7l11.1 7.2c.5.3.5 1.1 0 1.4L8.9 19.9c-.6.4-1.4 0-1.4-.7V4.8Z"/></svg>
+      </button>
+    </div>
+    <h4>Juego interactivo</h4>
+    <p>Descubre una aventura fascinante que te dejará helado. Acompaña a cinco chicas a sobrevivir en condiciones extremas en una montaña que esconde secretos sobrenaturales que pondrán a prueba todas sus virtudes de supervivencia.</p>
+    <a class="tutorials-link" href="https://tipsy.chat/es/chat/1789797040625935644" target="_blank" rel="noopener noreferrer">Juega ahora ↗</a>
+  </div>
+  <a class="scroll-hint" href="#about" aria-label="Bajar a la siguiente sección"><span aria-hidden="true">↓</span></a>
+</section>
+<section id="about"><div class="container narrow"><div class="section-header">¿De qué trata?</div><p>Una excursión a la montaña sale muy mal cuando una tormenta termina complicando mucho las cosas.</p><p><highlight>Sobrevive</highlight> junto a cinco chicas mientras enfrentas los peligros y las dificultades de una inmensa montaña empapada de misterios.</p><p>¿Podrás hacer que todas lleguen a la cima con vida?</p></div></section>
+<section id="demo"><div class="container"><div class="section-header">Mecánicas</div><ul class="video-roll">
+<li><a href="#" data-mech="0" aria-label="Ampliar 60% Hipotermia"><img decoding="async" loading="lazy" src="media/mecanica-1.webp" alt="Infografía original 60% Hipotermia: el frío fuerte provoca visiones"/></a><div class="mech-label"><span>01 / HIPOTERMIA</span><b aria-hidden="true">↗</b></div></li>
+<li><a href="#" data-mech="1" aria-label="Ampliar Radio compartida"><img decoding="async" loading="lazy" src="media/mecanica-2.webp" alt="Infografía original de la radio compartida: todas hablan en el mismo canal"/></a><div class="mech-label"><span>02 / RADIO COMPARTIDA</span><b aria-hidden="true">↗</b></div></li>
+<li><a href="#" data-mech="2" aria-label="Ampliar las cinco notas"><img decoding="async" loading="lazy" src="media/mecanica-3.webp" alt="Infografía original de las cinco notas ocultas en la montaña"/></a><div class="mech-label"><span>03 / CINCO NOTAS</span><b aria-hidden="true">↗</b></div></li>
+</ul><div class="mechanics-footer">❄ &nbsp; <span>HIPOTERMIA</span> &nbsp; · &nbsp; RADIO COMPARTIDA &nbsp; · &nbsp; NOTAS OCULTAS &nbsp; ❄</div></div></section>
+<section id="features"><div class="container"><div class="section-header">La montaña</div><div class="feature-container"><div class="feature"><svg viewBox="0 0 64 64" fill="none" stroke-width="1.5" stroke-linejoin="round"><path d="M2 52 23 10l17 29 8-16 14 29H2Z"/><path d="m14 30 9-20 13 23M42 33l6-10 9 15"/></svg><h4>Escala</h4><p>Cuida cada paso, porque podría ser el último.</p></div><div class="feature"><svg viewBox="0 0 64 64" fill="none" stroke-width="1.6" stroke-linecap="round"><rect x="16" y="25" width="32" height="31" rx="4"/><path d="M22 25 42 5M22 35h18M22 42h9M49 12q7 4 7 12"/><circle cx="40" cy="46" r="4"/></svg><h4>Comunícate</h4><p>Cada chica tiene habilidades y presentarán desafíos nuevos; conviene siempre mantener el contacto.</p></div><div class="feature"><svg viewBox="0 0 64 64" fill="none" stroke-width="1.5"><circle cx="32" cy="16" r="8"/><circle cx="13" cy="27" r="6"/><circle cx="51" cy="27" r="6"/><path d="M18 57V45c0-10 6-15 14-15s14 5 14 15v12M3 53V43c0-7 4-10 10-10 3 0 5 1 7 4M61 53V43c0-7-4-10-10-10-3 0-5 1-7 4"/></svg><h4>Reúne al equipo</h4><p>La misión principal es reunirte con las demás. Cada metro hacia el ascenso les pondrá las cosas más difíciles.</p></div></div></div>
+<div class="banner"><div class="banner-child bc-left"><div class="section-sub-header">Cada decisión tomada,<br/><em>tiene consecuencias.</em></div><div class="animated-scroll"><div class="scroll-header"><span class="scroll-nav sn-1"></span><span class="scroll-nav sn-2"></span><span class="scroll-nav sn-3"></span></div><div class="scroll-body"><div class="scroll-content"><div class="scroll-child"><div class="scroll-child-title">ESTADO / FRÍO</div><div class="fake-meter"><i style="width:30%"></i></div><div class="fake-line"></div><div class="fake-line small"></div></div><div class="scroll-child"><div class="scroll-child-title">ESTADO / PELIGRO</div><div class="fake-meter"><i style="width:60%"></i></div><div class="fake-line"></div><div class="fake-line small"></div></div><div class="scroll-child"><div class="scroll-child-title">ESTADO / ALERTA</div><div class="fake-meter"><i style="width:90%"></i></div><div class="fake-line"></div><div class="fake-line small"></div></div></div></div></div></div>
+<div class="banner-child bc-right"><div class="section-sub-header">Elige <em>sabiamente.</em></div><div class="focus-events"><div class="scroll-header"><span class="scroll-nav sn-1"></span><span class="scroll-nav sn-2"></span></div><div class="focus-body"><div class="focus-title">¿QUÉ CAMINO TOMARÁS?</div><div class="focus-question">Una decisión puede cambiarlo todo.</div><div class="focus-choice"><span>01</span> Cruza el puente <b>↗</b></div><div class="focus-choice chosen"><span>02</span> Busca otro camino <b>↗</b></div><div class="focus-cursor">➤</div></div></div></div></div>
+</section>
+<section id="howto"><div class="container"><div class="section-header">Personajes principales</div><div class="gallery" id="gallery"></div><div class="section-sub-header">Conoce a tu equipo. Cada una tiene un nivel de relación distinto y podrían generarse roces entre algunas de ellas.</div><a class="tutorials-link" href="https://tipsy.chat/es/chat/1789797040625935644" target="_blank" rel="noopener noreferrer">Juega ahora ↗</a><h4>Cada segundo de espera cuenta.</h4></div></section>
+<footer><h4>Historia original</h4><div class="foot-mark">S.O.S.</div><div class="foot-line"></div><p>PERDIDAS EN LA ALTURA</p></footer><a href="#home" role="button" class="scrollTop" aria-label="Volver arriba">↑</a>
+<div class="lightbox" id="image-viewer" role="dialog" aria-modal="true" aria-label="Galería ampliada" hidden><button class="lightbox-close" id="viewer-close" aria-label="Cerrar">✕</button><div class="lightbox-head"><span id="viewer-title">MECÁNICAS / S.O.S.</span><span id="viewer-count">01 / 03</span></div><div class="lightbox-content"><button class="lightbox-nav" id="viewer-prev" aria-label="Anterior">←</button><img id="viewer-image" alt="Imagen ampliada"/><div class="gallery-lightbox-missing" id="viewer-error" hidden>Imagen externa no disponible. Se conserva la URL original.</div><button class="lightbox-nav" id="viewer-next" aria-label="Siguiente">→</button></div><div class="lightbox-foot">EXPEDICIÓN S.O.S.<span>TECLAS ← → PARA CAMBIAR · ESC PARA CERRAR</span></div></div>
+
+<script type="application/json" id="sos-chars-json">["media/personaje-1.webp","media/personaje-2.webp","media/personaje-3.webp","media/personaje-4.webp","media/personaje-5.webp","media/personaje-6.webp"]</script>
+<script>
+(function(){
+ const nav=document.querySelector('.navbar'); const links=[...document.querySelectorAll('.navbar-nav a')]; const sections=[...document.querySelectorAll('section[id]')]; const up=document.querySelector('.scrollTop'); const menu=document.getElementById('nav-toggle'); const collapse=document.getElementById('scroll-spy');
+ function onScroll(){nav.classList.toggle('show-color',scrollY>50); up.classList.toggle('show-button',scrollY>250); let active='';sections.forEach(s=>{if(s.getBoundingClientRect().top<130)active=s.id});links.forEach(a=>a.parentElement.classList.toggle('active',a.hash==='#'+active));}window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+ menu.addEventListener('click',()=>{const expanded=collapse.classList.toggle('open');menu.setAttribute('aria-expanded',String(expanded));});
+ links.forEach(a=>a.addEventListener('click',()=>{collapse.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+ const mech=[...document.querySelectorAll('[data-mech] img')].map(el=>el.src);
+ const characters=JSON.parse(document.getElementById('sos-chars-json').textContent);
+ const gallery=document.getElementById('gallery');characters.forEach((url,i)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ampliar retrato '+(i+1));const img=document.createElement('img');img.decoding='async';img.src=url;img.alt='Retrato original '+(i+1);img.loading='lazy';const fallback=document.createElement('span');fallback.className='gallery-fallback';fallback.innerHTML='<span>❄</span>RETRATO '+String(i+1).padStart(2,'0')+'<small>Imagen no disponible</small>';const num=document.createElement('span');num.className='gallery-num';num.textContent=String(i+1).padStart(2,'0')+' / '+String(characters.length).padStart(2,'0');const shade=document.createElement('span');shade.className='gallery-shade';const label=document.createElement('span');label.className='gallery-info';label.innerHTML='S.O.S. <b>↗</b>';img.addEventListener('error',()=>b.classList.add('no-image'));img.addEventListener('load',()=>b.classList.remove('no-image'));b.append(img,fallback,shade,num,label);b.addEventListener('click',()=>open('chars',i));gallery.appendChild(b)});
+ const lb=document.getElementById('image-viewer'),full=document.getElementById('viewer-image'),err=document.getElementById('viewer-error'),counter=document.getElementById('viewer-count'),lbTitle=document.getElementById('viewer-title');let type='mech',idx=0,lastFocused=null;
+ function urls(){return type==='mech'?mech:characters;}function display(n){idx=(n+urls().length)%urls().length;counter.textContent=String(idx+1).padStart(2,'0')+' / '+String(urls().length).padStart(2,'0');lbTitle.textContent=type==='mech'?'MECÁNICAS / S.O.S.':'PERSONAJES / S.O.S.';err.hidden=true;full.hidden=false;full.src=urls()[idx];full.alt=(type==='mech'?'Mecánica ':'Retrato ')+(idx+1);}function open(t,n){lastFocused=document.activeElement;type=t;display(n);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('viewer-close').focus();}function close(){lb.hidden=true;document.body.style.overflow='';if(lastFocused?.focus)lastFocused.focus();}
+ full.addEventListener('error',()=>{full.hidden=true;err.hidden=false;});document.querySelectorAll('[data-mech]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();open('mech',Number(a.dataset.mech))}));document.getElementById('viewer-close').addEventListener('click',close);document.getElementById('viewer-prev').addEventListener('click',()=>display(idx-1));document.getElementById('viewer-next').addEventListener('click',()=>display(idx+1));lb.addEventListener('click',e=>{if(e.target===lb)close()});document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')display(idx-1);if(e.key==='ArrowRight')display(idx+1);if(e.key==='Tab'){const buts=[...lb.querySelectorAll('button')];if(e.shiftKey&&document.activeElement===buts[0]){e.preventDefault();buts[buts.length-1].focus()}else if(!e.shiftKey&&document.activeElement===buts[buts.length-1]){e.preventDefault();buts[0].focus()}}});
+})();
+</script>
+<script>
+(function(){
+  const video=document.getElementById('sos-cover-video');
+  const toggle=document.getElementById('sos-video-toggle');
+  if(!video||!toggle)return;
+  video.muted=true;
+  video.defaultMuted=true;
+  video.playsInline=true;
+  const sync=()=>{
+    toggle.classList.toggle('is-paused',video.paused);
+    toggle.setAttribute('title',video.paused?'Reproducir video':'Pausar video');
+    toggle.setAttribute('aria-label',video.paused?'Reproducir video':'Pausar video');
+    toggle.setAttribute('aria-pressed',String(video.paused));
+  };
+  toggle.addEventListener('click',()=>{if(video.paused){video.play().catch(()=>{});}else video.pause();sync();});
+  video.addEventListener('play',sync);
+  video.addEventListener('pause',sync);
+  video.addEventListener('loadedmetadata',sync);
+  if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){video.pause();sync();}
+  else video.play().catch(()=>{sync();});
+  sync();
+})();
+</script></body></html>
